@@ -21,17 +21,65 @@
             font-family: 'Quicksand', sans-serif;
             background: linear-gradient(145deg, #f9fbe7 0%, #eaf7e1 100%);
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem 1.5rem;
             color: #2f4d3c;
             line-height: 1.5;
         }
 
-        .card {
-            max-width: 1300px;
+        /* ФИКСИРОВАННАЯ НАВИГАЦИЯ (всегда сверху) */
+        .fixed-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
+            background: rgba(255, 250, 235, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 6px 20px rgba(100, 130, 80, 0.2);
+            z-index: 1000;
+            padding: 0.8rem 2rem;
+            border-bottom: 2px solid #d0e4bf;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 2.5rem;
+        }
+
+        .nav-link {
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 600;
+            font-size: 1.25rem;
+            color: #1e4a2a;
+            text-decoration: none;
+            padding: 0.5rem 0.8rem;
+            border-radius: 40px;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 2px solid transparent;
+        }
+
+        .nav-link i {
+            color: #e3957c;
+            font-size: 1.3rem;
+        }
+
+        .nav-link:hover {
+            background: #dcedc4;
+            border-color: #b8d3a4;
+            transform: translateY(-2px);
+        }
+
+        /* Чтобы контент не уходил под навигацию */
+        .page-wrapper {
+            padding-top: 85px; /* высота навигации + отступ */
+        }
+
+        .main-card {
+            max-width: 1300px;
+            width: 90%;
+            margin: 0.5rem auto 2rem auto;
             background-color: rgba(255, 255, 250, 0.75);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
@@ -158,7 +206,7 @@
             margin-right: 10px;
         }
 
-        /* Блок деталей (как в первой версии) */
+        /* Блок деталей */
         .details {
             background: #fefef8;
             border-radius: 32px;
@@ -283,7 +331,6 @@
             box-shadow: 0 18px 25px -12px #9f9b6b;
         }
 
-        /* Кнопка для перехода к отзывам */
         .btn-reviews {
             background: #c1b57b;
             color: #2f4025;
@@ -320,7 +367,7 @@
             margin-top: 2.5rem;
             grid-column: 1 / -1;
             width: 100%;
-            scroll-margin-top: 2rem;
+            scroll-margin-top: 100px; /* чтобы при навигации не пряталось под меню */
         }
 
         .reviews-title {
@@ -440,7 +487,6 @@
             transform: scale(1.07);
         }
 
-        /* Кнопка "Оставить отзыв" под каруселью */
         .review-footer-btn {
             display: flex;
             justify-content: center;
@@ -485,7 +531,7 @@
                 margin-left: auto;
                 margin-right: auto;
             }
-            .card {
+            .main-card {
                 padding: 1.8rem;
             }
             .name-title h1 {
@@ -497,6 +543,16 @@
             }
             .review-card {
                 flex: 0 0 calc(100% - 1rem);
+            }
+            .fixed-nav {
+                gap: 1rem;
+                padding: 0.6rem 1rem;
+            }
+            .nav-link {
+                font-size: 1rem;
+            }
+            .page-wrapper {
+                padding-top: 75px;
             }
         }
 
@@ -514,158 +570,169 @@
 <body>
     <div class="leaf-decoration"></div>
 
-    <div class="card">
-        <div class="grid-container">
-            <!-- Левая колонка: фото + фраза под ним -->
-            <div class="photo-section">
-                <div class="photo-frame">
-                    <img src="https://i.postimg.cc/FF8n8Frg/photo-2026-02-27-20-43-04.jpg" alt="Елена Чистякова, преподаватель английского">
-                </div>
-                <!-- Фраза под фото -->
-                <div class="photo-caption">
-                    <i class="fas fa-heart" style="color:#e3957c;"></i> Английский с интересом и любовью
-                </div>
-            </div>
+    <!-- ФИКСИРОВАННАЯ НАВИГАЦИЯ (всегда видна сверху) -->
+    <nav class="fixed-nav">
+        <a href="#" class="nav-link"><i class="fas fa-seedling"></i> Главная</a>
+        <a href="#reviews" class="nav-link"><i class="fas fa-star"></i> Отзывы</a>
+        <a href="https://t.me/Elena_Simple_english" target="_blank" class="nav-link"><i class="fab fa-telegram"></i> Контакты</a>
+        <a href="https://disk.yandex.ru/d/MgsSIfqEuFZ8Dw" target="_blank" class="nav-link"><i class="fas fa-certificate"></i> Дипломы</a>
+    </nav>
 
-            <!-- Правая колонка -->
-            <div class="info-section">
-                <div class="name-title">
-                    <h1>Чистякова Елена Олеговна</h1>
-                    <h2>
-                        <span>преподаватель английского языка</span>
-                    </h2>
-                </div>
-
-                <div class="spring-quote">
-                    <i class="fas fa-solid fa-sun-plant-wilt"></i>
-                    «Простой английский для детей и подростков»
-                </div>
-
-                <!-- Блок деталей -->
-                <div class="details">
-                    <p>
-                        <i class="fas fa-graduation-cap"></i>
-                        <span><strong>Филолог, преподаватель английского</strong> · опыт 16 лет</span>
-                    </p>
-                    <p>
-                        <i class="fas fa-heart" style="color:#e3957c;"></i>
-                        <span>Очень люблю свою работу, сочетаю классические методики и современные подходы.</span>
-                    </p>
-                    <p>
-                        <i class="fas fa-puzzle-piece"></i>
-                        <span>Использую интерактивные форматы, игры, проекты  и инновыционные технологии .</span>
-                    </p>
-                </div>
-
-                <!-- Блок комплексного подхода -->
-                <div class="approach-block">
-                    <div class="approach-text">
-                        <i class="fas fa-solid fa-leaf" style="color:#87b17a; margin-right: 12px;"></i>
-                        <strong>Комплексный подход:</strong> на занятиях мы не только развиваем языковые навыки, но и гибкость мышления, любознательность и уверенность. Учимся работать над совместными проектами в онлайн-пространстве, общаться, слушать, отстаивать свою точку зрения, брать на себя ответственность. Прокачиваем эмоциональный интеллект и критическое мышление — всё, что помогает человеку быть более успешным в разных сферах жизни.
+    <!-- Основной контент (отступ сверху для навигации) -->
+    <div class="page-wrapper">
+        <div class="main-card">
+            <div class="grid-container">
+                <!-- Левая колонка: фото + фраза под ним -->
+                <div class="photo-section">
+                    <div class="photo-frame">
+                        <img src="https://i.postimg.cc/FF8n8Frg/photo-2026-02-27-20-43-04.jpg" alt="Елена Чистякова, преподаватель английского">
+                    </div>
+                    <!-- Фраза под фото -->
+                    <div class="photo-caption">
+                        <i class="fas fa-heart" style="color:#e3957c;"></i> Английский с интересом и любовью
                     </div>
                 </div>
 
-                <!-- Красивая цель -->
-                <div class="goal-quote">
-                    <i class="fas fa-solid fa-quote-right"></i>
-                    Моя цель: Не просто научить английскому, а зажечь интерес к языку, показать, что учёба – это творческое приключение, полное открытий, а язык – это способ узнать наш мир лучше!
+                <!-- Правая колонка -->
+                <div class="info-section">
+                    <div class="name-title">
+                        <h1>Чистякова Елена Олеговна</h1>
+                        <h2>
+                            <span>преподаватель английского языка</span>
+                        </h2>
+                    </div>
+
+                    <div class="spring-quote">
+                        <i class="fas fa-solid fa-sun-plant-wilt"></i>
+                        «Простой английский для детей и подростков»
+                    </div>
+
+                    <!-- Блок деталей -->
+                    <div class="details">
+                        <p>
+                            <i class="fas fa-graduation-cap"></i>
+                            <span><strong>Филолог, преподаватель английского</strong> · опыт 16 лет</span>
+                        </p>
+                        <p>
+                            <i class="fas fa-heart" style="color:#e3957c;"></i>
+                            <span>Очень люблю свою работу, сочетаю классические методики и современные подходы.</span>
+                        </p>
+                        <p>
+                            <i class="fas fa-puzzle-piece"></i>
+                            <span>Использую интерактивные форматы, игры, проекты  и инновыционные технологии .</span>
+                        </p>
+                    </div>
+
+                    <!-- Блок комплексного подхода -->
+                    <div class="approach-block">
+                        <div class="approach-text">
+                            <i class="fas fa-solid fa-leaf" style="color:#87b17a; margin-right: 12px;"></i>
+                            <strong>Комплексный подход:</strong> на занятиях мы не только развиваем языковые навыки, но и гибкость мышления, любознательность и уверенность. Учимся работать над совместными проектами в онлайн-пространстве, общаться, слушать, отстаивать свою точку зрения, брать на себя ответственность. Прокачиваем эмоциональный интеллект и критическое мышление — всё, что помогает человеку быть более успешным в разных сферах жизни.
+                        </div>
+                    </div>
+
+                    <!-- Красивая цель -->
+                    <div class="goal-quote">
+                        <i class="fas fa-solid fa-quote-right"></i>
+                        Моя цель: Не просто научить английскому, а зажечь интерес к языку, показать, что учёба – это творческое приключение, полное открытий, а язык – это способ узнать наш мир лучше!
+                    </div>
+
+                    <!-- Группа кнопок -->
+                    <div class="button-group">
+                        <a href="https://t.me/Elena_Simple_english" target="_blank" class="btn btn-telegram">
+                            <i class="fab fa-telegram-plane"></i> Связаться со мной
+                        </a>
+                        <a href="#reviews" class="btn btn-reviews" id="reviewsScrollBtn">
+                            <i class="fas fa-star"></i> Отзывы
+                        </a>
+                        <a href="https://disk.yandex.ru/d/MgsSIfqEuFZ8Dw" target="_blank" class="btn btn-diploma">
+                            <i class="fas fa-certificate"></i> Дипломы
+                        </a>
+                    </div>
+
+                    <hr>
+                    <footer>
+                        <i class="fas fa-dove" style="color:#95b58b;"></i>  Елена Чистякова · преподаватель английского
+                    </footer>
+                </div>
+            </div>
+
+            <!-- СЕКЦИЯ ОТЗЫВОВ (карусель) -->
+            <div class="reviews-section" id="reviews">
+                <div class="reviews-title">
+                    Родители и ученики о занятиях
+                </div>
+                <div class="carousel-container">
+                    <div class="carousel-track" id="reviewTrack">
+                        <!-- ОТЗЫВ 1 (Алёнка, мама Ромы) -->
+                        <div class="review-card">
+                            <div class="review-text">
+                                "Для меня показателем является заинтересовать ребенка. Сын с удовольствием занимается и делает домашнее задание. Урок составлен всегда индивидуально, очень интересно, материал объясняется доступно. Мой сын непоседа, но Елена смогла его заинтересовать своим особым подходом. Особенно ценно, что Елена не просто дает знания, но и учит мыслить самостоятельно. Результат не заставил себя ждать, как мама, я вижу результаты в оценках, а самое главное знаниях языка у своего сына. Спасибо большое!!!"
+                            </div>
+                            <div class="review-author">
+                                <i class="fas fa-user-circle"></i>
+                                <div>
+                                    <div class="author-name">Алёна</div>
+                                    <div class="author-desc">Мама Ромы, 9 лет</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ОТЗЫВ 2 (Александра) -->
+                        <div class="review-card">
+                            <div class="review-text">
+                                "Елена, хочу поблагодарить Вас за терпение и старания обучать моего трудного ребенка! Несмотря на его лень и не желание, Вам все-таки удалось организовать грамотный подход и донести до него знания! Рекомендую Вас всем знакомым, Вы настоящий учитель-профессионал!"
+                            </div>
+                            <div class="review-author">
+                                <i class="fas fa-user-circle"></i>
+                                <div>
+                                    <div class="author-name">Александра</div>
+                                    <div class="author-desc">Довольный родитель</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ОТЗЫВ 3 (Ольга, мама Дарьи) -->
+                        <div class="review-card">
+                            <div class="review-text">
+                                "Елена, профессионал своего дела!!! До знакомства с ней, мы с дочерью поменяли четырех учителей, но результата которого хотелось, так и не получили. Дочь за год достигла очень хороших результатов в английском. Ей стало интересно заниматься. На уроки готовилась всегда с удовольствием. У Елены разработана своя методика обучения: уроки построены с учетом интересов современных детей и технологий, что тоже очень порадовало. На сегодняшний момент дочь без проблем читает книги на английском языке, смотрит фильмы без перевода. Ну, а школьный английский для нее сейчас вообще не проблема. Спасибо большое нашему великолепному Учителю!"
+                            </div>
+                            <div class="review-author">
+                                <i class="fas fa-user-circle"></i>
+                                <div>
+                                    <div class="author-name">Ольга</div>
+                                    <div class="author-desc">Мама Дарьи</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ОТЗЫВ 4 (Оксана, мама Максима и Лизы) -->
+                        <div class="review-card">
+                            <div class="review-text">
+                                "Оба моих ребёнка занимаются английским языком у Елены. Уроки и домашнее задание очень интересные и полезные, с разнообразной подачей материала. Все задания выполняют сами, мы вообще не помогаем. Благодаря занятиям они лучшие в классе на уроках. Сын написал ВПР на отлично!!! У обоих твёрдая пятёрка по английскому языку в школе!!! Спасибо за профессионализм, терпение и умение найти подход к каждому ребёнку."
+                            </div>
+                            <div class="review-author">
+                                <i class="fas fa-user-circle"></i>
+                                <div>
+                                    <div class="author-name">Оксана</div>
+                                    <div class="author-desc">Мама Максима и Лизы</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- стрелки навигации -->
+                    <div class="carousel-nav">
+                        <button class="nav-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+                        <button class="nav-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+                    </div>
                 </div>
 
-                <!-- Группа кнопок -->
-                <div class="button-group">
-                    <a href="https://t.me/Elena_Simple_english" target="_blank" class="btn btn-telegram">
-                        <i class="fab fa-telegram-plane"></i> Связаться со мной
+                <!-- Кнопка "Оставить отзыв" -->
+                <div class="review-footer-btn">
+                    <a href="https://t.me/Elena_Simple_english" target="_blank" class="btn-leave-review">
+                        <i class="fab fa-telegram"></i> Оставить отзыв
                     </a>
-                    <a href="#reviews" class="btn btn-reviews" id="reviewsScrollBtn">
-                        <i class="fas fa-star"></i> Отзывы
-                    </a>
-                    <a href="https://disk.yandex.ru/d/MgsSIfqEuFZ8Dw" target="_blank" class="btn btn-diploma">
-                        <i class="fas fa-certificate"></i> Дипломы
-                    </a>
                 </div>
-
-                <hr>
-                <footer>
-                    <i class="fas fa-dove" style="color:#95b58b;"></i>  Елена Чистякова · преподаватель английского
-                </footer>
-            </div>
-        </div>
-
-        <!-- СЕКЦИЯ ОТЗЫВОВ (карусель) -->
-        <div class="reviews-section" id="reviews">
-            <div class="reviews-title">
-                Родители и ученики о занятиях
-            </div>
-            <div class="carousel-container">
-                <div class="carousel-track" id="reviewTrack">
-                    <!-- ОТЗЫВ 1 (Алёнка, мама Ромы) -->
-                    <div class="review-card">
-                        <div class="review-text">
-                            "Для меня показателем является заинтересовать ребенка. Сын с удовольствием занимается и делает домашнее задание. Урок составлен всегда индивидуально, очень интересно, материал объясняется доступно. Мой сын непоседа, но Елена смогла его заинтересовать своим особым подходом. Особенно ценно, что Елена не просто дает знания, но и учит мыслить самостоятельно. Результат не заставил себя ждать, как мама, я вижу результаты в оценках, а самое главное знаниях языка у своего сына. Спасибо большое!!!"
-                        </div>
-                        <div class="review-author">
-                            <i class="fas fa-user-circle"></i>
-                            <div>
-                                <div class="author-name">Алёна</div>
-                                <div class="author-desc">Мама Ромы, 9 лет</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- ОТЗЫВ 2 (Александра) -->
-                    <div class="review-card">
-                        <div class="review-text">
-                            "Елена, хочу поблагодарить Вас за терпение и старания обучать моего трудного ребенка! Несмотря на его лень и не желание, Вам все-таки удалось организовать грамотный подход и донести до него знания! Рекомендую Вас всем знакомым, Вы настоящий учитель-профессионал!"
-                        </div>
-                        <div class="review-author">
-                            <i class="fas fa-user-circle"></i>
-                            <div>
-                                <div class="author-name">Александра</div>
-                                <div class="author-desc">Довольный родитель</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- ОТЗЫВ 3 (Ольга, мама Дарьи) -->
-                    <div class="review-card">
-                        <div class="review-text">
-                            "Елена, профессионал своего дела!!! До знакомства с ней, мы с дочерью поменяли четырех учителей, но результата которого хотелось, так и не получили. Дочь за год достигла очень хороших результатов в английском. Ей стало интересно заниматься. На уроки готовилась всегда с удовольствием. У Елены разработана своя методика обучения: уроки построены с учетом интересов современных детей и технологий, что тоже очень порадовало. На сегодняшний момент дочь без проблем читает книги на английском языке, смотрит фильмы без перевода. Ну, а школьный английский для нее сейчас вообще не проблема. Спасибо большое нашему великолепному Учителю!"
-                        </div>
-                        <div class="review-author">
-                            <i class="fas fa-user-circle"></i>
-                            <div>
-                                <div class="author-name">Ольга</div>
-                                <div class="author-desc">Мама Дарьи</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- ОТЗЫВ 4 (Оксана, мама Максима и Лизы) -->
-                    <div class="review-card">
-                        <div class="review-text">
-                            "Оба моих ребёнка занимаются английским языком у Елены. Уроки и домашнее задание очень интересные и полезные, с разнообразной подачей материала. Все задания выполняют сами, мы вообще не помогаем. Благодаря занятиям они лучшие в классе на уроках. Сын написал ВПР на отлично!!! У обоих твёрдая пятёрка по английскому языку в школе!!! Спасибо за профессионализм, терпение и умение найти подход к каждому ребёнку."
-                        </div>
-                        <div class="review-author">
-                            <i class="fas fa-user-circle"></i>
-                            <div>
-                                <div class="author-name">Оксана</div>
-                                <div class="author-desc">Мама Максима и Лизы</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- стрелки навигации -->
-                <div class="carousel-nav">
-                    <button class="nav-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
-                    <button class="nav-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
-                </div>
-            </div>
-
-            <!-- Кнопка "Оставить отзыв" -->
-            <div class="review-footer-btn">
-                <a href="https://t.me/Elena_Simple_english" target="_blank" class="btn-leave-review">
-                    <i class="fab fa-telegram"></i> Оставить отзыв
-                </a>
             </div>
         </div>
     </div>
@@ -673,17 +740,21 @@
     <!-- Скрипт -->
     <script>
         (function() {
-            const scrollBtn = document.getElementById('reviewsScrollBtn');
-            if (scrollBtn) {
-                scrollBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const reviewsSection = document.getElementById('reviews');
-                    if (reviewsSection) {
-                        reviewsSection.scrollIntoView({ behavior: 'smooth' });
+            // плавный скролл для всех якорных ссылок в навигации и кнопки "Отзывы"
+            const links = document.querySelectorAll('a[href^="#"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
                     }
                 });
-            }
+            });
 
+            // карусель
             const track = document.getElementById('reviewTrack');
             const prevBtn = document.getElementById('prevBtn');
             const nextBtn = document.getElementById('nextBtn');
@@ -706,17 +777,13 @@
 
                 window.addEventListener('resize', updateCardWidth);
 
-                const scrollAmount = () => {
-                    updateCardWidth();
-                    return cardWidth + cardMarginRight; 
-                };
-
                 let currentPosition = 0;
 
                 nextBtn.addEventListener('click', () => {
                     updateCardWidth();
                     const step = cardWidth + cardMarginRight;
-                    const newPos = Math.max(currentPosition - step, -step * (cards.length - 1));
+                    const maxScroll = -step * (cards.length - 1);
+                    const newPos = Math.max(currentPosition - step, maxScroll);
                     if (newPos !== currentPosition) {
                         currentPosition = newPos;
                         track.style.transform = `translateX(${currentPosition}px)`;
