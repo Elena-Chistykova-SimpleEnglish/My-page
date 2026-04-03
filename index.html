@@ -305,193 +305,13 @@
             color: white; cursor: pointer; font-size: 1.5rem;
         }
 
-        /* ========== MOBILE RESPONSIVE ========== */
-        @media (max-width: 768px) {
-            /* Compact navigation for mobile */
-            .fixed-nav {
-                padding: 0.6rem 1rem;
-                gap: 0.8rem;
-                flex-wrap: nowrap;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: none;
-                -ms-overflow-style: none;
-            }
-            .fixed-nav::-webkit-scrollbar {
-                display: none;
-            }
-            .nav-link {
-                font-size: 0.95rem;
-                padding: 0.4rem 0.8rem;
-                white-space: nowrap;
-                flex-shrink: 0;
-            }
-            .nav-link i {
-                font-size: 1.1rem;
-            }
-            
-            /* Adjust page wrapper for smaller nav */
-            .page-wrapper {
-                padding-top: 70px;
-            }
-            
-            /* Main card adjustments */
-            .main-card {
-                padding: 1.5rem 1.2rem;
-                width: 95%;
-                margin: 0.5rem auto 2rem;
-                border-radius: 32px;
-            }
-            
-            /* Single column layout */
-            .grid-container {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            
-            /* Photo section */
-            .photo-frame {
-                max-width: 260px;
-                margin-bottom: 1rem;
-                border-radius: 32px;
-            }
-            .photo-caption {
-                font-size: 1rem;
-                padding: 0.6rem 1.2rem;
-            }
-            
-            /* Name and title */
-            .name-title {
-                border-left: 6px solid #b0d2a2;
-                padding-left: 1rem;
-            }
-            .name-title h1 {
-                font-size: 1.8rem;
-                margin-bottom: 0.4rem;
-            }
-            .name-title h2 {
-                font-size: 1.1rem;
-            }
-            .name-title h2 span {
-                font-size: 0.95rem;
-                padding: 0.25rem 0.8rem;
-            }
-            
-            /* Content blocks */
-            .spring-quote,
-            .details,
-            .approach-block,
-            .goal-quote {
-                padding: 1.2rem;
-                font-size: 0.95rem;
-                border-radius: 24px;
-            }
-            .spring-quote {
-                font-size: 1rem;
-            }
-            .details p {
-                font-size: 0.95rem;
-                margin-bottom: 0.8rem;
-            }
-            .details i {
-                font-size: 1.3rem;
-            }
-            .approach-text {
-                font-size: 0.95rem;
-                line-height: 1.6;
-            }
-            .goal-quote {
-                font-size: 1rem;
-            }
-            
-            /* Buttons */
-            .button-group {
-                gap: 0.8rem;
-            }
-            .btn {
-                font-size: 1rem;
-                padding: 0.9rem 1.5rem;
-                flex: 1 1 100%;
-            }
-            
-            /* QR codes */
-            .qr-section {
-                padding: 1.5rem 1rem;
-                margin-top: 1.5rem;
-            }
-            .qr-codes-container {
-                gap: 1.5rem;
-            }
-            .qr-preview {
-                width: 150px;
-                height: 150px;
-            }
-            .qr-label {
-                font-size: 0.9rem;
-            }
-            
-            /* Reviews */
-            .reviews-section {
-                margin-top: 2rem;
-            }
-            .reviews-title {
-                font-size: 1.5rem;
-                margin-bottom: 1.2rem;
-            }
-            .carousel-container {
-                padding: 1.5rem 0.8rem;
-            }
-            .review-card {
-                flex: 0 0 100%;
-                padding: 1.5rem;
-            }
-            .review-text {
-                font-size: 0.9rem;
-                margin-bottom: 1rem;
-            }
-            .author-name {
-                font-size: 1rem;
-            }
-            .author-desc {
-                font-size: 0.8rem;
-            }
-            
-            /* Slot button */
-            .floating-slot-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 1.3rem;
-                bottom: 15px;
-                left: 15px;
-            }
+        @media (max-width: 900px) {
+            .grid-container { grid-template-columns: 1fr; }
+            .review-card { flex: 0 0 calc(50% - 1rem); }
         }
-        
-        @media (max-width: 480px) {
-            .main-card {
-                padding: 1.2rem 1rem;
-                border-radius: 24px;
-            }
-            .photo-frame {
-                max-width: 220px;
-            }
-            .name-title h1 {
-                font-size: 1.6rem;
-            }
-            .spring-quote,
-            .details,
-            .approach-block,
-            .goal-quote {
-                padding: 1rem;
-                font-size: 0.9rem;
-            }
-            .btn {
-                font-size: 0.95rem;
-                padding: 0.8rem 1.2rem;
-            }
-            .qr-preview {
-                width: 130px;
-                height: 130px;
-            }
+        @media (max-width: 600px) {
+            .review-card { flex: 0 0 100%; }
+            .qr-preview { width: 140px; height: 140px; }
         }
     </style>
 </head>
@@ -598,7 +418,7 @@
                         <!-- Review 1 -->
                         <div class="review-card">
                             <div class="review-text">
-                                "Для меня показателем является заинтересовать ребенка. Сын с удовольствием занимается и делает домашнее задание. Урок составлен всегда индивидуально, очень интересно. Елена смогла найти особый подход к моему непоседе. Результат вижу в оценках и знаниях!"
+                                "Для меня показателем является заинтересовать ребенка. Сын с удовольствием занимается и делает домашнее задание. Урок составлен всегда индивидуально, очень интересно, материал объясняется доступно. Мой сын непоседа, но Елена смогла его заинтересовать своим особым подходом. Особенно ценно, что Елена не просто даёт знания, но и учит мыслить самостоятельно. Результат не заставил себя ждать, как мама, я вижу результаты в оценках, а самое главное знаниях языка у своего сына. Спасибо большое 😊!!!!"
                             </div>
                             <div class="review-author">
                                 <div class="author-name">Алёна</div>
@@ -617,7 +437,35 @@
                             </div>
                         </div>
 
-                        <!-- Review 3 -->
+   <!-- Review 3 -->
+                        <div class="review-card">
+                            <div class="review-text">
+                                "Елена, профессионал своего дела!!!
+До знакомства с ней, мы с дочерью поменяли четырех учителей, но результата которого хотелось, так и не получили🫤
+Елену мне порекомендовала подруга, мы пришли на пробное занятие и не пожалели!!!
+Дочь за год достигла очень хороших результатов в английском. Ей стало интересно заниматься. На уроки готовилась всегда с удовольствием. У Елены разработана своя методика обучения: уроки построены с учетом интересов современных детей и технологий)), что тоже очень порадовало☺️
+На сегодняшний момент дочь без проблем читает книги на английском языке, смотрит фильмы без перевода. Ну, а школьный Английский для нее сейчас вообще не проблема🙂Спасибо большое нашему великолепному Учителю👏👏👏❤️❤️❤️"
+                            </div>
+                            <div class="review-author">
+                                <div class="author-name">Ольга</div>
+                                <div class="author-desc">Мама Дарьи</div>
+                            </div>
+                        </div>
+<!-- Review 3 -->
+                        <div class="review-card">
+                            <div class="review-text">
+                                "Занималась с Еленой и осталась очень довольна 😊 
+Уроки были интересными и насыщенными, благодаря чему я значительно улучшила свои знания языка 👆🏻
+Лена всегда поддерживет атмосферу доверия и понимания, что делает обучение очень  комфортным 🫂
+Рекомендую тем, кто хочет повысить уровень английского!"
+                            </div>
+                            <div class="review-author">
+                                <div class="author-name">Даша</div>
+                                <div class="author-desc">15 лет</div>
+                            </div>
+                        </div>
+						
+                        <!-- Review 4 -->
                         <div class="review-card">
                             <div class="review-text">
                                 "Елена, хочу поблагодарить Вас за терпение и старания обучать моего трудного ребенка! Несмотря на его лень и нежелание, Вам удалось организовать грамотный подход и донести знания! Рекомендую Вас всем знакомым, Вы настоящий учитель-профессионал!"
@@ -628,18 +476,9 @@
                             </div>
                         </div>
 
-                        <!-- Review 4 -->
-                        <div class="review-card">
-                            <div class="review-text">
-                                "Елена — профессионал своего дела! До знакомства с ней мы поменяли четырех учителей. Дочь за год достигла очень хороших результатов. Ей стало интересно заниматься. Сейчас она без проблем читает книги на английском, смотрит фильмы без перевода. Школьный английский для нее вообще не проблема!"
-                            </div>
-                            <div class="review-author">
-                                <div class="author-name">Ольга</div>
-                                <div class="author-desc">Мама Дарьи</div>
-                            </div>
-                        </div>
-
-                        <!-- Review 5 -->
+                     
+     
+                        <!-- Review 6 -->
                         <div class="review-card">
                             <div class="review-text">
                                 "Оба моих ребёнка занимаются английским у Елены. Уроки очень интересные, с разнообразной подачей материала. Все задания выполняют сами. Благодаря занятиям они лучшие в классе! Сын написал ВПР на отлично! У обоих твёрдая пятёрка. Спасибо за профессионализм и умение найти подход к каждому!"
